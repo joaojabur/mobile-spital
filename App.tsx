@@ -6,7 +6,6 @@ import Landing from "./src/screens/Landing";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 import {
-  Quicksand_300Light,
   Quicksand_400Regular,
   Quicksand_500Medium,
   Quicksand_600SemiBold,
@@ -17,7 +16,6 @@ import Routes from "./src/routes";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    Quicksand_300Light,
     Quicksand_400Regular,
     Quicksand_500Medium,
     Quicksand_600SemiBold,

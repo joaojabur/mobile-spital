@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { StatusBar, Text, View } from "react-native";
 
 import Background from "../../components/Background";
 
@@ -24,32 +24,40 @@ const Landing = () => {
   }
 
   return (
-    <Background>
-      <View style={styles.container}>
-        <DoctorsSvg width={345} height={255} style={styles.image} />
-        <Text style={[styles.title, { marginBottom: 40 }]}>
-          Como deseja continuar?
-        </Text>
-        <View style={styles.button}>
-          <LoginButton
-            title="Entrar com o Google"
-            Icon={GoogleIconSvg}
-            bgColor={googleButton}
-          />
-        </View>
+    <>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
+      <Background>
+        <View style={styles.container}>
+          <Text style={styles.logo}>Spital</Text>
+          <DoctorsSvg width={345} height={255} style={styles.image} />
+          <Text style={[styles.title, { marginBottom: 40 }]}>
+            Como deseja continuar?
+          </Text>
+          <View style={styles.button}>
+            <LoginButton
+              title="Entrar com o Google"
+              Icon={GoogleIconSvg}
+              bgColor={googleButton}
+            />
+          </View>
 
-        <Text style={styles.title}>Ou</Text>
+          <Text style={styles.title}>Ou</Text>
 
-        <View style={styles.button}>
-          <LoginButton
-            onPress={handleSpitalButton}
-            title="Entrar com a Spital"
-            Icon={SpitalIconSvg}
-            bgColor={primary100}
-          />
+          <View style={styles.button}>
+            <LoginButton
+              onPress={handleSpitalButton}
+              title="Entrar com a Spital"
+              Icon={SpitalIconSvg}
+              bgColor={primary100}
+            />
+          </View>
         </View>
-      </View>
-    </Background>
+      </Background>
+    </>
   );
 };
 

@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 import { theme } from "../../global/styles/theme";
 
-const { text700 } = theme.fonts;
-const { dark } = theme.colors;
+const { text700, text400 } = theme.fonts;
+const { dark, gray } = theme.colors;
 
 export const styles = StyleSheet.create({
   container: {
@@ -18,5 +18,23 @@ export const styles = StyleSheet.create({
     color: dark,
     fontSize: 26,
   },
-  form: {},
+  form: {
+    width: "100%",
+    flex: 1,
+    marginTop: 30,
+  },
+  label: {
+    fontFamily: text400,
+    color: gray,
+    fontSize: 20,
+    marginBottom: 10,
+    marginTop: 10,
+  },
+  buttonContainer: {
+    width: "100%",
+    marginTop: 30,
+  },
+  hero: {
+    alignSelf: "flex-end",
+  },
 });

@@ -13,15 +13,17 @@ export const theme = {
     white: "#FFFFFF",
     black: "#000000",
     gray: "#CCCCCC",
+    darkGray: "#969696",
 
     googleButton: "#4285F4",
 
+    overlay: "rgba(0,0,0,0.7)",
     correct: "#3EB713",
     error: "#FF0000",
+    star: "#FFC107",
   },
 
   fonts: {
-    text300: " Quicksand_300Light",
     text400: "Quicksand_400Regular",
     text500: "Quicksand_500Medium",
     text600: "Quicksand_600SemiBold",

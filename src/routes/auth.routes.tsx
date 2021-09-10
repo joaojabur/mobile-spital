@@ -1,16 +1,20 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+
 import { theme } from "../global/styles/theme";
+
 import Landing from "../screens/Landing";
 import Login from "../screens/Login";
+import BottomTabsNavigation from "./Stacks/BottomTabs";
 
-const { Navigator, Screen } = createStackNavigator();
+const RootStack = createStackNavigator();
 
-const AuthRoutes = () => {
+const RootRoutes = () => {
   const { secondary100 } = theme.colors;
+  const isLoggedIn = true;
 
   return (
-    <Navigator
+    <RootStack.Navigator
       headerMode="none"
       initialRouteName="Signin"
       screenOptions={{
@@ -21,10 +25,18 @@ const AuthRoutes = () => {
         },
       }}
     >
-      <Screen name="Landing" component={Landing} />
-      <Screen name="Login" component={Login} />
-    </Navigator>
+      {!isLoggedIn ? (
+        <>
+          <RootStack.Screen name="Landing" component={Landing} />
+          <RootStack.Screen name="Login" component={Login} />
+        </>
+      ) : (
+        <>
+          <RootStack.Screen name="Main" component={BottomTabsNavigation} />
+        </>
+      )}
+    </RootStack.Navigator>
   );
 };
 
-export default AuthRoutes;
+export default RootRoutes;

@@ -9,9 +9,10 @@ import { useNavigation } from "@react-navigation/native";
 interface SimpleHeaderProps {
   title: string;
   component?: ReactNode;
+  action?: () => void;
 }
 
-const SimpleHeader = ({ title, component }: SimpleHeaderProps) => {
+const SimpleHeader = ({ title, component, action }: SimpleHeaderProps) => {
   const { dark } = theme.colors;
 
   const navigation = useNavigation();
@@ -28,7 +29,11 @@ const SimpleHeader = ({ title, component }: SimpleHeaderProps) => {
 
       <Text style={styles.title}>{title}</Text>
 
-      <RectButton style={styles.componentContainer}>{component}</RectButton>
+      {component ? (
+        <RectButton onPress={action} style={styles.componentContainer}>{component}</RectButton>
+      ) : (
+        <View style={{ width: 40, height: 40 }}></View>
+      )}
     </View>
   );
 };
