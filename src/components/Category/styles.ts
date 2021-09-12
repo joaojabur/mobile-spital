@@ -1,13 +1,13 @@
 import { StyleSheet } from "react-native";
 import { theme } from "../../global/styles/theme";
 
-const { overlay, gray, white } = theme.colors;
-const { text400 } = theme.fonts;
+const { overlay, dark, white } = theme.colors;
+const { text700 } = theme.fonts;
 
 export const styles = StyleSheet.create({
   container: {
-    width: 105,
-    height: 88,
+    width: 115,
+    height: 94,
     backgroundColor: white,
     borderRadius: 8,
     marginLeft: 6,
@@ -24,8 +24,8 @@ export const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   label: {
-    fontFamily: text400,
-    color: gray,
+    fontFamily: text700,
+    color: dark,
     fontSize: 9,
   },
 });

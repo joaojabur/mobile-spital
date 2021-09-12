@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Text, View, Animated } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
@@ -6,10 +7,17 @@ import Avatar from "../../components/Avatar";
 import Background from "../../components/Background";
 import Categories from "../../components/Categories";
 import Doctors from "../../components/Doctors";
+import LoadMoreButton from "../../components/LoadMoreButton";
 
 import { styles } from "./styles";
 
 const Home = () => {
+  const navigation = useNavigation();
+
+  function handleGoSearch() {
+    navigation.navigate("Search");
+  }
+
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
 
   return (
@@ -20,13 +28,13 @@ const Home = () => {
             styles.header,
             {
               height: scrollY.interpolate({
-                inputRange: [10, 160, 185, 200],
-                outputRange: [180, 40, 20, 0],
+                inputRange: [0, 250],
+                outputRange: [250, 0],
                 extrapolate: "clamp",
               }),
               opacity: scrollY.interpolate({
-                inputRange: [1, 75, 170],
-                outputRange: [1, 1, 0],
+                inputRange: [0, 250],
+                outputRange: [1, 0],
                 extrapolate: "clamp",
               }),
             },
@@ -52,14 +60,14 @@ const Home = () => {
             styles.field,
             {
               marginTop: scrollY.interpolate({
-                inputRange: [10, 160],
+                inputRange: [10, 140],
                 outputRange: [30, 40],
               }),
             },
           ]}
         >
           <Text style={styles.title}>Categorias</Text>
-          <RectButton>
+          <RectButton onPress={handleGoSearch}>
             <Text style={styles.subtitle}>Ver mais</Text>
           </RectButton>
         </Animated.View>

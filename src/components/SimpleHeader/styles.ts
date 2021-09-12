@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontFamily: text700,
-    fontSize: 28,
+    fontSize: 24,
     color: dark,
     textAlign: "center",
   },

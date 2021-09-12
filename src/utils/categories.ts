@@ -27,7 +27,7 @@ import radiotherapyIcon from "../assets/icons/hospital/063-radiotherapy.svg";
 import muscleIcon from "../assets/icons/hospital/064-muscle.svg";
 import angiologyIcon from "../assets/icons/hospital/065-globulos-vermelhos.svg";
 
-interface CategoryProps {
+export interface CategoryProps {
   Img: React.FC<SvgProps>;
   label: string;
   goTo: string;

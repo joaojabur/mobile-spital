@@ -2,6 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Profile from "../../screens/Profile";
 import { theme } from "../../global/styles/theme";
+import Edit from "../../screens/Edit";
 
 const ProfileStack = createStackNavigator();
 
@@ -21,6 +22,7 @@ const ProfileNavigation = () => {
       }}
     >
       <ProfileStack.Screen name="Profile" component={Profile} />
+      <ProfileStack.Screen name="Edit" component={Edit} />
     </ProfileStack.Navigator>
   );
 };

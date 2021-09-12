@@ -10,9 +10,10 @@ interface SimpleHeaderProps {
   title: string;
   component?: ReactNode;
   action?: () => void;
+  returnFunction?: () => void;
 }
 
-const SimpleHeader = ({ title, component, action }: SimpleHeaderProps) => {
+const SimpleHeader = ({ title, component, action, returnFunction }: SimpleHeaderProps) => {
   const { dark } = theme.colors;
 
   const navigation = useNavigation();
@@ -23,7 +24,7 @@ const SimpleHeader = ({ title, component, action }: SimpleHeaderProps) => {
 
   return (
     <View style={styles.container}>
-      <RectButton onPress={handleGoBack} style={styles.returnContainer}>
+      <RectButton onPress={returnFunction ? returnFunction : handleGoBack} style={styles.returnContainer}>
         <Entypo name="chevron-left" size={34} color={dark} />
       </RectButton>
 

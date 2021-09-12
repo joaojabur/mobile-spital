@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView, ScrollViewProps } from "react-native";
 import Doctor from "../Doctor";
+import LoadMoreButton from "../LoadMoreButton";
 
 import { styles } from "./styles";
 
@@ -23,6 +24,7 @@ const Doctors = ({ ...rest }: DoctorsProps) => {
       <Doctor />
       <Doctor />
       <Doctor />
+      <LoadMoreButton />
     </ScrollView>
   );
 };

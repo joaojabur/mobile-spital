@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { theme } from "../../global/styles/theme";
 
 const { white, gray, dark, darkGray } = theme.colors;
-const { text700, text400, text500 } = theme.fonts;
+const { text700, text600, text500 } = theme.fonts;
 
 export const styles = StyleSheet.create({
   container: {
@@ -15,8 +15,14 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: gray,
+    shadowColor: dark,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0,
+    shadowRadius: 0,
+    elevation: 1.5,
     marginTop: 10,
   },
   avatar: {
@@ -37,8 +43,8 @@ export const styles = StyleSheet.create({
     fontSize: 14,
   },
   area: {
-    fontFamily: text400,
-    color: gray,
+    fontFamily: text600,
+    color: darkGray,
     fontSize: 12,
   },
   rating: {

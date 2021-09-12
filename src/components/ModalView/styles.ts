@@ -6,6 +6,8 @@ const { overlay } = theme.colors;
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
   overlay: {
     flex: 1,

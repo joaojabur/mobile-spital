@@ -5,5 +5,6 @@ export const styles = StyleSheet.create({
     width: "100%",
     flex: 1,
     paddingHorizontal: 24,
+    marginBottom: 110,
   },
 });

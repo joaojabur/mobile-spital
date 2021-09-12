@@ -10,17 +10,14 @@ import { styles } from "./styles";
 
 interface ModalViewProps extends ModalProps {
   children: ReactNode;
-  closeModal: () => void;
 }
 
-const ModalView = ({ children, closeModal, ...rest }: ModalViewProps) => {
+const ModalView = ({ children, ...rest }: ModalViewProps) => {
   return (
     <Modal statusBarTranslucent {...rest}>
-      <TouchableWithoutFeedback onPress={closeModal}>
-        <View style={styles.overlay}>
-          <View style={styles.container}>{children}</View>
-        </View>
-      </TouchableWithoutFeedback>
+      <View style={styles.overlay}>
+        <View style={styles.container}>{children}</View>
+      </View>
     </Modal>
   );
 };

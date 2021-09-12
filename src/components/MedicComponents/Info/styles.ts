@@ -1,0 +1,207 @@
+import { StyleSheet } from "react-native";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
+import { theme } from "../../../global/styles/theme";
+
+const { primary100, white, dark, overlay, secondary100 } = theme.colors;
+const { text700, text400 } = theme.fonts;
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-start",
+  },
+  header: {
+    paddingTop: getStatusBarHeight(),
+    width: "100%",
+    height: 280,
+    backgroundColor: primary100,
+    borderBottomRightRadius: 120,
+    justifyContent: "flex-start",
+    paddingHorizontal: 30,
+  },
+  headerButtons: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 16,
+  },
+  headerButton: {
+    width: 40,
+    height: 40,
+    backgroundColor: white,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  medicInfo: {
+    marginTop: 50,
+    flexDirection: "row",
+    width: "100%",
+  },
+  medicInfoAvatar: {
+    width: 90,
+    height: 90,
+    borderRadius: 45,
+  },
+  medicInfoText: {
+    alignItems: "flex-start",
+    justifyContent: "center",
+    marginLeft: 20,
+  },
+  medicInfoTextName: {
+    fontFamily: text700,
+    color: dark,
+    fontSize: 24,
+  },
+  medicInfoTextArea: {
+    fontFamily: text400,
+    color: dark,
+    fontSize: 14,
+  },
+  button: {
+    width: "85%",
+  },
+  info: {
+    marginTop: 30,
+    flex: 1,
+    width: "100%",
+    paddingHorizontal: "7.5%",
+  },
+  infoToday: {
+    width: "100%",
+    height: 42,
+    borderRadius: 21,
+    backgroundColor: white,
+    borderWidth: 0.2,
+    borderColor: overlay,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 16,
+  },
+  infoTodayText: {
+    fontFamily: text400,
+    color: dark,
+    fontSize: 14,
+    textAlign: "center",
+  },
+  infoTodayTextBold: {
+    fontFamily: text700,
+    textAlign: "center",
+    marginLeft: 2,
+  },
+  address: {
+    marginTop: 30,
+    width: "100%",
+    height: 130,
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    borderRadius: 8,
+    backgroundColor: white,
+    borderWidth: 0.2,
+    borderColor: overlay,
+  },
+  addressTitle: {
+    fontFamily: text700,
+    color: dark,
+    fontSize: 20,
+  },
+  addressText: {
+    marginTop: 10,
+    marginBottom: 10,
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+  },
+  addressTextLabel: {
+    marginLeft: 6,
+    fontFamily: text400,
+    color: dark,
+    fontSize: 13,
+  },
+  addressDistance: {
+    marginTop: 5,
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  addressDistanceFlex: {
+    flexDirection: "row",
+  },
+  seeMap: {
+    fontFamily: text700,
+    color: secondary100,
+    fontSize: 14,
+  },
+  reviews: {
+    marginTop: 30,
+    width: "100%",
+    height: 175,
+    backgroundColor: secondary100,
+    borderRadius: 8,
+  },
+  reviewsStars: {
+    width: "100%",
+    height: "70%",
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    backgroundColor: "transparent",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  reviewsText: {
+    width: "100%",
+    height: "30%",
+    backgroundColor: white,
+    borderBottomRightRadius: 8,
+    borderBottomLeftRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  reviewsTextLabel: {
+    fontFamily: text700,
+    color: dark,
+    fontSize: 22,
+    alignItems: "center",
+  },
+  reviewsStarText: {
+    fontFamily: text700,
+    color: white,
+    fontSize: 40,
+  },
+  academy: {
+    marginTop: 30,
+    width: "100%",
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+    backgroundColor: white,
+    marginBottom: 120,
+    borderRadius: 8,
+  },
+  academyTitle: {
+    fontFamily: text700,
+    color: dark,
+    fontSize: 30,
+  },
+  academyContent: {
+    marginTop: 20,
+    width: "100%",
+    flex: 1,
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+  },
+  academyText: {
+    fontFamily: text400,
+    fontSize: 20,
+    color: dark,
+    marginBottom: 20,
+  },
+  academyTextBold: {
+    fontFamily: text700,
+    fontSize: 22,
+  },
+});

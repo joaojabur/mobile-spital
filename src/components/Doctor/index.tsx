@@ -4,12 +4,28 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./styles";
 import { theme } from "../../global/styles/theme";
+import { useNavigation } from "@react-navigation/native";
 
 const Doctor = () => {
+  const navigation = useNavigation();
+
+  function handleGoMedicProfile() {
+    navigation.navigate("Main", {
+      screen: "Search",
+      params: {
+        screen: "Medic",
+      },
+    });
+  }
+
   const { star } = theme.colors;
 
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      onPress={handleGoMedicProfile}
+      activeOpacity={0.7}
+      style={styles.container}
+    >
       <Image
         style={styles.avatar}
         source={{
