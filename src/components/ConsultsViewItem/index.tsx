@@ -1,10 +1,26 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
 
 const ConsultsViewItem = () => {
+  const navigation = useNavigation();
+
+  function handleGoConsult() {
+    navigation.navigate("Main", {
+      screen: "Consults",
+      params: {
+        screen: "Consult",
+      },
+    });
+  }
+
   return (
-    <TouchableOpacity activeOpacity={0.7} style={styles.container}>
+    <TouchableOpacity
+      onPress={handleGoConsult}
+      activeOpacity={0.7}
+      style={styles.container}
+    >
       <View style={styles.profile}>
         <View style={styles.profileInfo}>
           <Image

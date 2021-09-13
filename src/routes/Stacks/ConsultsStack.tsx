@@ -2,6 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Consults from "../../screens/Consults";
 import { theme } from "../../global/styles/theme";
+import Consult from "../../screens/Consult";
 
 const ConsultsStack = createStackNavigator();
 
@@ -21,6 +22,7 @@ const ConsultsNavigation = () => {
       }}
     >
       <ConsultsStack.Screen name="Consults" component={Consults} />
+      <ConsultsStack.Screen name="Consult" component={Consult} />
     </ConsultsStack.Navigator>
   );
 };

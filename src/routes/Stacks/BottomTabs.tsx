@@ -13,6 +13,7 @@ import HomeTabBarIcon from "../BottomTabsComponents/HomeTabBarIcon";
 import SearchTabBarIcon from "../BottomTabsComponents/SearchTabBarIcon";
 import ConsultsTabBarIcon from "../BottomTabsComponents/ConsultsTabBarIcon";
 import ProfileTabBarIcon from "../BottomTabsComponents/ProfileTabBarIcon";
+import ConsultsNavigation from "./ConsultsStack";
 
 const { white, dark, primary100 } = theme.colors;
 
@@ -71,7 +72,7 @@ const BottomTabsNavigation = () => {
           ),
         }}
         name="Consults"
-        component={Consults}
+        component={ConsultsNavigation}
       />
       <BottomTabsStack.Screen
         options={{
