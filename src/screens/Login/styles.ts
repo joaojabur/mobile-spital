@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { theme } from "../../global/styles/theme";
 
 const { text700, text400 } = theme.fonts;
-const { dark, gray } = theme.colors;
+const { dark, gray, red } = theme.colors;
 
 export const styles = StyleSheet.create({
   container: {
@@ -36,5 +36,11 @@ export const styles = StyleSheet.create({
   },
   hero: {
     alignSelf: "flex-end",
+  },
+  error: {
+    fontFamily: text700,
+    color: red,
+    fontSize: 18,
+    marginTop: 22,
   },
 });

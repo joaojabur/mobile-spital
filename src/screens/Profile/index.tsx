@@ -4,14 +4,18 @@ import { Text, TouchableOpacity, View } from "react-native";
 import Avatar from "../../components/Avatar";
 import Background from "../../components/Background";
 import { Feather } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import { styles } from "./styles";
 import { theme } from "../../global/styles/theme";
 import { useNavigation } from "@react-navigation/native";
+import { useAuth } from "../../context/AuthProvider";
 
 const Profile = () => {
+  const { signOut, user } = useAuth();
+
   const navigation = useNavigation();
-  const { primary100 } = theme.colors;
+  const { primary100, white } = theme.colors;
   let porcentage = 60;
 
   function handleGoEdit() {
@@ -29,7 +33,9 @@ const Profile = () => {
             }}
           />
 
-          <Text style={styles.name}>João Accoroni Jabur</Text>
+          <Text style={styles.name}>
+            {user?.firstName} {user?.lastName}
+          </Text>
         </View>
 
         <TouchableOpacity
@@ -57,6 +63,19 @@ const Profile = () => {
             </View>
           </View>
         </View>
+
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={signOut}
+          style={styles.leaveButton}
+        >
+          <MaterialIcons
+            onPress={signOut}
+            name="logout"
+            size={30}
+            color={white}
+          />
+        </TouchableOpacity>
       </View>
     </Background>
   );

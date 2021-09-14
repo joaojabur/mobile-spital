@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     fontFamily: text700,
     color: primary100,
     fontSize: 60,
-    marginBottom: 50
+    marginBottom: 50,
   },
   image: {
     alignSelf: "center",
@@ -28,5 +28,16 @@ export const styles = StyleSheet.create({
   },
   button: {
     width: "80%",
+  },
+  registerButton: {
+    marginTop: 20,
+    padding: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  registerText: {
+    fontFamily: text700,
+    color: primary100,
+    fontSize: 20,
   },
 });

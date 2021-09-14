@@ -10,33 +10,35 @@ import Input from "../../components/TextInput";
 import Background from "../../components/Background";
 import SimpleHeader from "../../components/SimpleHeader";
 import Button from "../../components/Button";
-import ModalView from "../../components/ModalView";
+
+import { useAuth } from "../../context/AuthProvider";
 import { useNavigation } from "@react-navigation/native";
 
 interface LoginProps {
-  email: string;
-  password: string;
+  email: string | null;
+  password: string | null;
 }
 
 const Login = () => {
-  const navigation = useNavigation();
+  const [error, setError] = useState<string | null>(null);
+  const [isThereError, setIsThereError] = useState<boolean>(false);
 
-  function handleLogin() {
-    navigation.navigate("Home");
+  const { signIn } = useAuth();
+
+  async function handleLogin() {
+    if (credentials.email && credentials.password) {
+      const { error } = await signIn(credentials.email, credentials.password);
+
+      setIsThereError(false);
+      setError(error);
+    } else {
+      setIsThereError(true);
+    }
   }
 
   const [credentials, setCredentials] = useState<LoginProps>({} as LoginProps);
-  const [isInfoOpen, setIsInfoOpen] = useState<boolean>(false);
 
   const { secondary100 } = theme.colors;
-
-  function handleOpenInfoModal() {
-    setIsInfoOpen(true);
-  }
-
-  function handleCloseInfoModal() {
-    setIsInfoOpen(false);
-  }
 
   return (
     <KeyboardAvoidingView
@@ -46,11 +48,9 @@ const Login = () => {
       <Background>
         <View style={styles.container}>
           <SimpleHeader
-            action={handleOpenInfoModal}
             title="Entrar"
             component={
               <MaterialCommunityIcons
-                onPress={handleOpenInfoModal}
                 name="information"
                 size={24}
                 color={secondary100}
@@ -77,23 +77,21 @@ const Login = () => {
                 placeholder="Digite sua senha"
               />
 
-              <View  style={styles.buttonContainer}>
+              <View style={styles.buttonContainer}>
                 <Button onPress={handleLogin} title="Logar" />
               </View>
+
+              {isThereError && (
+                <Text style={styles.error}>Preencha os campos</Text>
+              )}
+
+              {error && <Text style={styles.error}>{error}</Text>}
 
               <Medic width="100%" height="80%" style={styles.hero} />
             </View>
           </View>
         </View>
       </Background>
-      <ModalView
-        visible={isInfoOpen}
-        transparent
-        animationType="slide"
-        closeModal={handleCloseInfoModal}
-      >
-        <View></View>
-      </ModalView>
     </KeyboardAvoidingView>
   );
 };

@@ -13,6 +13,7 @@ import {
 } from "@expo-google-fonts/quicksand";
 import Background from "./src/components/Background";
 import Routes from "./src/routes";
+import AuthProvider from "./src/context/AuthProvider";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -36,13 +37,15 @@ export default function App() {
   }
 
   return (
-    <Background>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="transparent"
-        translucent
-      />
-      <Routes />
-    </Background>
+    <AuthProvider>
+      <Background>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor="transparent"
+          translucent
+        />
+        <Routes />
+      </Background>
+    </AuthProvider>
   );
 }

@@ -1,9 +1,11 @@
 import React from "react";
-import { View } from "react-native";
+import { View, ViewProps } from "react-native";
 import { styles } from "./styles";
 
-const Line = () => {
-  return <View style={styles.container} />;
+type LineProps = ViewProps;
+
+const Line = ({ ...rest }: LineProps) => {
+  return <View {...rest} style={styles.container} />;
 };
 
 export default Line;

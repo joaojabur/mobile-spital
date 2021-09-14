@@ -7,11 +7,13 @@ import Avatar from "../../components/Avatar";
 import Background from "../../components/Background";
 import Categories from "../../components/Categories";
 import Doctors from "../../components/Doctors";
-import LoadMoreButton from "../../components/LoadMoreButton";
+import { useAuth } from "../../context/AuthProvider";
 
 import { styles } from "./styles";
 
 const Home = () => {
+  const { user } = useAuth();
+
   const navigation = useNavigation();
 
   function handleGoSearch() {
@@ -51,7 +53,7 @@ const Home = () => {
 
             <View style={styles.greeting}>
               <Text style={styles.hello}>Olá</Text>
-              <Text style={styles.name}>Daniela!</Text>
+              <Text style={styles.name}>{user?.firstName}!</Text>
             </View>
           </View>
         </Animated.View>

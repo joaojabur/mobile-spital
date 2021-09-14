@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/quicksand": "^0.2.0",
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "0.1.10",
     "@react-native-picker/picker": "^2.1.0",
     "@react-navigation/bottom-tabs": "^5.8.0",
@@ -16,6 +17,7 @@
     "@react-navigation/native": "^5.7.3",
     "@react-navigation/stack": "^5.9.0",
     "@types/react-native-calendars": "^1.1264.2",
+    "axios": "^0.21.4",
     "date-fns": "^2.23.0",
     "expo": "~42.0.1",
     "expo-app-loading": "^1.1.2",

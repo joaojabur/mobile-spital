@@ -3,11 +3,12 @@ import { theme } from "../../global/styles/theme";
 
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 
-const { primary100, dark, white, gray } = theme.colors;
+const { primary100, dark, white, gray, red } = theme.colors;
 const { text700, text400 } = theme.fonts;
 
 export const styles = StyleSheet.create({
   container: {
+    position: "relative",
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
@@ -115,5 +116,16 @@ export const styles = StyleSheet.create({
     fontFamily: text700,
     color: white,
     fontSize: 20,
+  },
+  leaveButton: {
+    width: 60,
+    height: 60,
+    position: "absolute",
+    bottom: 120,
+    right: 20,
+    backgroundColor: red,
+    borderRadius: 30,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

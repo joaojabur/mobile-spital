@@ -11,13 +11,20 @@ import DoctorsSvg from "../../assets/images/doctors.svg";
 import LoginButton from "../../components/LoginButton";
 import { theme } from "../../global/styles/theme";
 import { useNavigation } from "@react-navigation/native";
+import { RectButton } from "react-native-gesture-handler";
 
 const Landing = () => {
   const { googleButton, primary100 } = theme.colors;
 
   const navigation = useNavigation();
 
-  function handleGoogleButton() {}
+  function handleGoogleButton() {
+    console.log("Login with google!");
+  }
+
+  function handleGoRegister() {
+    navigation.navigate("Register");
+  }
 
   function handleSpitalButton() {
     navigation.navigate("Login");
@@ -39,6 +46,7 @@ const Landing = () => {
           </Text>
           <View style={styles.button}>
             <LoginButton
+              onPress={handleGoogleButton}
               title="Entrar com o Google"
               Icon={GoogleIconSvg}
               bgColor={googleButton}
@@ -55,6 +63,10 @@ const Landing = () => {
               bgColor={primary100}
             />
           </View>
+
+          <RectButton onPress={handleGoRegister} style={styles.registerButton}>
+            <Text style={styles.registerText}>Registrar com Spital</Text>
+          </RectButton>
         </View>
       </Background>
     </>
