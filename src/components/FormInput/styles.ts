@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { theme } from "../../global/styles/theme";
 
-const { darkGray, white, dark, primary100 } = theme.colors;
+const { darkGray, white, dark, primary100, error } = theme.colors;
 const { text500, text600 } = theme.fonts;
 
 export const styles = StyleSheet.create({
@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     width: "100%",
     height: 66,
+    marginBottom: 20
   },
   label: {
     fontFamily: text500,
@@ -27,5 +28,11 @@ export const styles = StyleSheet.create({
     borderColor: primary100,
     borderRadius: 8,
     paddingHorizontal: 20,
+  },
+  error: {
+    fontFamily: text600,
+    color: error,
+    fontSize: 16,
+    marginTop: 2,
   },
 });

@@ -23,7 +23,7 @@ const Register = () => {
     <Name nextPage={nextPage} />,
     <Credentials nextPage={nextPage} />,
     <Phone nextPage={nextPage} />,
-    <Review nextPage={nextPage} />,
+    <Review returnName={returnName} returnCredentials={returnCredentials} returnPhone={returnPhone} nextPage={nextPage} />,
   ];
   const [page, setPage] = useState<number>(0);
 
@@ -37,6 +37,18 @@ const Register = () => {
 
   function previousPage() {
     setPage(page - 1);
+  }
+
+  function returnName() {
+    setPage(0);
+  }
+
+  function returnCredentials() {
+    setPage(1);
+  }
+
+  function returnPhone() {
+    setPage(2);
   }
 
   return (

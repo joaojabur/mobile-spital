@@ -14,7 +14,6 @@ interface User {
   lastName: string;
   email: string;
   phoneNumber: string;
-  image: string;
   xp: number;
 }
 
@@ -25,6 +24,7 @@ interface AuthContextData {
   userID: number | null;
   signIn(email: string, password: string): Promise<any>;
   signOut(): Promise<any>;
+  signUp(user: User): Promise<any>;
 }
 
 interface AuthProviderProps {
@@ -114,12 +114,22 @@ export default function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
+  async function signup(user: User) {
+    const response = await api.post("clients", {
+      ...user,
+    });
+    console.log(response);
+
+    return response;
+  }
+
   let value = {
     user,
     userID,
     authenticated: user !== null,
     signIn: login,
     signOut: logout,
+    signUp: signup,
   } as AuthContextData;
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
