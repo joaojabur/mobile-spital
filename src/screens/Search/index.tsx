@@ -8,6 +8,8 @@ import SearchInput from "../../components/SearchInput";
 import { styles } from "./styles";
 
 const Search = () => {
+  const [category, setCategory] = useState<string>("");
+
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
 
   return (
@@ -51,10 +53,14 @@ const Search = () => {
               }),
             }}
           >
-            <SearchInput />
+            <SearchInput
+              value={category}
+              onChangeText={(text: string) => setCategory(text)}
+            />
           </Animated.View>
 
           <SearchCategories
+            search={category}
             onScroll={Animated.event(
               [
                 {

@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
@@ -29,8 +30,10 @@ const Review = ({
   returnCredentials,
   returnPhone,
 }: ReviewProps) => {
+  const navigation = useNavigation();
   const { primary100 } = theme.colors;
 
+  const [success, setSuccess] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [backendError, setBackendError] = useState<string>("");
   const [hasError, setHasError] = useState<boolean>(false);
@@ -46,7 +49,6 @@ const Review = ({
   }, [userData]);
 
   async function handleSubmitForm() {
-    console.log(userData)
     setLoading(true);
     const loopedErrors = Object.values(errors);
 
@@ -63,8 +65,8 @@ const Review = ({
       if (response.status === 201) {
         setHasError(false);
         setBackendError("");
-        nextPage();
         setLoading(false);
+        navigation.navigate("Success");
       } else {
         setHasError(false);
         setBackendError(response.data.message);

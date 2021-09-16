@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { KeyboardAvoidingView, Text, View, Platform } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Text,
+  View,
+  Platform,
+  ActivityIndicator,
+} from "react-native";
 
 import { styles } from "./styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -13,6 +19,7 @@ import Button from "../../components/Button";
 
 import { useAuth } from "../../context/AuthProvider";
 import { useNavigation } from "@react-navigation/native";
+import ModalView from "../../components/ModalView";
 
 interface LoginProps {
   email: string | null;
@@ -20,25 +27,34 @@ interface LoginProps {
 }
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isThereError, setIsThereError] = useState<boolean>(false);
 
   const { signIn } = useAuth();
 
   async function handleLogin() {
+    setLoading(true);
     if (credentials.email && credentials.password) {
-      const { error } = await signIn(credentials.email, credentials.password);
+      const response = await signIn(credentials.email, credentials.password);
 
+      if (!response.data.confirmed) {
+        setError("Usuário não confirmado");
+      } else {
+        setError(response.error);
+      }
       setIsThereError(false);
-      setError(error);
+
+      setLoading(false);
     } else {
       setIsThereError(true);
+      setLoading(false);
     }
   }
 
   const [credentials, setCredentials] = useState<LoginProps>({} as LoginProps);
 
-  const { secondary100 } = theme.colors;
+  const { secondary100, primary100 } = theme.colors;
 
   return (
     <KeyboardAvoidingView
@@ -71,6 +87,7 @@ const Login = () => {
               />
               <Text style={styles.label}>Senha</Text>
               <Input
+                secureTextEntry={true}
                 onChangeText={(text) =>
                   setCredentials({ ...credentials, password: text })
                 }
@@ -90,6 +107,9 @@ const Login = () => {
               <Medic width="100%" height="80%" style={styles.hero} />
             </View>
           </View>
+          <ModalView animationType="fade" visible={loading} transparent>
+            <ActivityIndicator size={50} color={primary100} />
+          </ModalView>
         </View>
       </Background>
     </KeyboardAvoidingView>

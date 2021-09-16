@@ -5,8 +5,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./styles";
 import { theme } from "../../global/styles/theme";
 import { useNavigation } from "@react-navigation/native";
+import { Medic } from "../Doctors";
 
-const Doctor = () => {
+interface DoctorProps {
+  data: Medic;
+}
+
+const Doctor = ({ data }: DoctorProps) => {
   const navigation = useNavigation();
 
   function handleGoMedicProfile() {
@@ -14,11 +19,19 @@ const Doctor = () => {
       screen: "Search",
       params: {
         screen: "Medic",
+        params: {
+          id: data.userID,
+          medicID: data.id,
+        },
       },
     });
   }
 
   const { star } = theme.colors;
+
+  const formattedDistance = Number(data?.distance?.toFixed(1));
+  const formattedRating =
+    data?.rating?.length === 1 ? data?.rating + ".0" : data?.rating;
 
   return (
     <TouchableOpacity
@@ -29,24 +42,24 @@ const Doctor = () => {
       <Image
         style={styles.avatar}
         source={{
-          uri: "https://s2.glbimg.com/FUcw2usZfSTL6yCCGj3L3v3SpJ8=/smart/e.glbimg.com/og/ed/f/original/2019/04/25/zuckerberg_podcast.jpg",
+          uri: data.url,
         }}
       />
 
       <View style={styles.personalInfo}>
         <View>
-          <Text style={styles.name}>Dr. Jason</Text>
-          <Text style={styles.area}>Cardiologista</Text>
+          <Text style={styles.name}>Dr. {data.firstName}</Text>
+          <Text style={styles.area}>{data.area}</Text>
         </View>
 
         <View style={styles.rating}>
           <Ionicons name="ios-star" size={14} color={star} />
-          <Text style={styles.stars}>5.0</Text>
+          <Text style={styles.stars}>{formattedRating}</Text>
         </View>
       </View>
 
       <View style={styles.distance}>
-        <Text style={styles.distanceText}>200 km</Text>
+        <Text style={styles.distanceText}>{formattedDistance} km</Text>
       </View>
     </TouchableOpacity>
   );

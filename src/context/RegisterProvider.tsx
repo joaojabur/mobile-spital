@@ -19,6 +19,8 @@ interface UserData {
 interface RegisterContextData {
   userData: UserData;
   setUserData: Dispatch<SetStateAction<UserData>>;
+  success: boolean;
+  setSuccess: Dispatch<SetStateAction<boolean>>;
 }
 
 interface RegisterProviderProps {

@@ -8,14 +8,13 @@ import Login from "../screens/Login";
 import BottomTabsNavigation from "./Stacks/BottomTabs";
 import { useAuth } from "../context/AuthProvider";
 import Register from "../screens/Register";
+import Success from "../screens/Success";
 
 const RootStack = createStackNavigator();
 
 const RootRoutes = () => {
   const { secondary100 } = theme.colors;
   const { authenticated } = useAuth();
-
-  console.log("Authenticated", authenticated);
 
   return (
     <RootStack.Navigator
@@ -34,6 +33,7 @@ const RootRoutes = () => {
           <RootStack.Screen name="Landing" component={Landing} />
           <RootStack.Screen name="Login" component={Login} />
           <RootStack.Screen name="Register" component={Register} />
+          <RootStack.Screen name="Success" component={Success} />
         </>
       ) : (
         <>

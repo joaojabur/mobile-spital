@@ -12,7 +12,7 @@ const ProfileNavigation = () => {
   return (
     <ProfileStack.Navigator
       headerMode="none"
-      initialRouteName="Signin"
+      initialRouteName="Profile"
       screenOptions={{
         headerShown: false,
         cardStyle: {

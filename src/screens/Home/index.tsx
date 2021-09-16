@@ -1,18 +1,21 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, Animated } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 
 import Avatar from "../../components/Avatar";
 import Background from "../../components/Background";
 import Categories from "../../components/Categories";
-import Doctors from "../../components/Doctors";
+import Doctors, { Medic } from "../../components/Doctors";
 import { useAuth } from "../../context/AuthProvider";
+import api from "../../services/api";
 
 import { styles } from "./styles";
 
 const Home = () => {
   const { user } = useAuth();
+  const [page, setPage] = useState<number>(0);
+  const [doctors, setDoctors] = useState<Array<Medic>>([]);
 
   const navigation = useNavigation();
 
@@ -21,6 +24,17 @@ const Home = () => {
   }
 
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
+
+  async function loadMore() {
+    let { data } = await api.get(
+      `medics?offset=${page}&lat=-21.233574&lon=-47.836621`
+    );
+    setDoctors(data);
+  }
+
+  useEffect(() => {
+    loadMore();
+  }, []);
 
   return (
     <Background>
@@ -90,6 +104,7 @@ const Home = () => {
             ],
             { useNativeDriver: false }
           )}
+          doctors={doctors}
         />
       </View>
     </Background>

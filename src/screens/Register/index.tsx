@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { ReactNode, useState } from "react";
-import { KeyboardAvoidingView, Platform } from "react-native";
+import { KeyboardAvoidingView, Platform, Text, View } from "react-native";
 
 import Background from "../../components/Background";
 import Credentials from "../../components/RegisterPages/Credentials";
@@ -18,14 +18,19 @@ export interface RegisterPageProps {
 
 const Register = () => {
   const navigation = useNavigation();
+  const [page, setPage] = useState<number>(0);
 
   const pages: Array<ReactNode> = [
     <Name nextPage={nextPage} />,
     <Credentials nextPage={nextPage} />,
     <Phone nextPage={nextPage} />,
-    <Review returnName={returnName} returnCredentials={returnCredentials} returnPhone={returnPhone} nextPage={nextPage} />,
+    <Review
+      returnName={returnName}
+      returnCredentials={returnCredentials}
+      returnPhone={returnPhone}
+      nextPage={nextPage}
+    />,
   ];
-  const [page, setPage] = useState<number>(0);
 
   function goBack() {
     navigation.goBack();

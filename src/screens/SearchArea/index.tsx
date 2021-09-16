@@ -61,6 +61,19 @@ const SearchArea = ({ route }: any) => {
             ],
             { useNativeDriver: false }
           )}
+          doctors={[
+            {
+              firstName: "Elon",
+              lastName: "Musk",
+              phoneNumber: "(16) 99798-4147",
+              area: "Cardiologista",
+              email: "elonzin2005@gmail.com",
+              userID: 2,
+              distance: 40,
+              star: "5",
+              url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Elon_Musk_Royal_Society.jpg/330px-Elon_Musk_Royal_Society.jpg",
+            },
+          ]}
         />
       </View>
 

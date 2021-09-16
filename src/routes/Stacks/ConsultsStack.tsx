@@ -12,7 +12,7 @@ const ConsultsNavigation = () => {
   return (
     <ConsultsStack.Navigator
       headerMode="none"
-      initialRouteName="Signin"
+      initialRouteName="Consults"
       screenOptions={{
         headerShown: false,
         cardStyle: {

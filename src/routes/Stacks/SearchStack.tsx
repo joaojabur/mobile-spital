@@ -13,7 +13,7 @@ const SearchNavigation = () => {
   return (
     <SearchStack.Navigator
       headerMode="none"
-      initialRouteName="Signin"
+      initialRouteName="Search"
       screenOptions={{
         headerShown: false,
         cardStyle: {

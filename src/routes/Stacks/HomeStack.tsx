@@ -11,7 +11,7 @@ const HomeNavigation = () => {
   return (
     <HomeStack.Navigator
       headerMode="none"
-      initialRouteName="Signin"
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
         cardStyle: {

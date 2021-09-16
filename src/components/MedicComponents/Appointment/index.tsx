@@ -55,7 +55,7 @@ LocaleConfig.locales["pt"] = {
 
 LocaleConfig.defaultLocale = "pt";
 
-const Appointment = ({ nextPage, previousPage }: MedicPagesProps) => {
+const Appointment = ({ nextPage, previousPage, types }: MedicPagesProps) => {
   const { text700 } = theme.fonts;
   const { primary100 } = theme.colors;
 

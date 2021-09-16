@@ -22,6 +22,7 @@ const BottomTabsStack = createBottomTabNavigator();
 const BottomTabsNavigation = () => {
   return (
     <BottomTabsStack.Navigator
+      initialRouteName="Search"
       tabBarOptions={{
         showLabel: false,
         style: {

@@ -64,9 +64,11 @@ export default function AuthProvider({ children }: AuthProviderProps) {
         password: password,
       });
 
-      let { token, id, confirmed } = response.data;
+      if (response === null) {
+        logout();
+      }
 
-      console.log(response.data);
+      let { token, id, confirmed } = response.data;
 
       if (confirmed) {
         setConfirmed(true);
@@ -80,6 +82,9 @@ export default function AuthProvider({ children }: AuthProviderProps) {
 
       return response;
     } catch (error) {
+      if (error) {
+        console.log(error);
+      }
       return error?.response?.data ?? { error: error.message };
     }
   }

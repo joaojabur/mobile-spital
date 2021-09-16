@@ -5,25 +5,40 @@ import LoadMoreButton from "../LoadMoreButton";
 
 import { styles } from "./styles";
 
-interface DoctorsProps extends ScrollViewProps {}
+export interface Medic {
+  id: number;
+  firstName: string;
+  email: string;
+  phoneNumber: string;
+  lastName: string;
+  area: string;
+  userID: number;
+  distance: number;
+  rating: string;
+  url: string;
+  address: string;
+  graduation: string;
+  master_degree: string | null;
+  doctorate_degree: string | null;
+  xp: number;
+  recipientID: string;
+  crm: string;
+}
 
-const Doctors = ({ ...rest }: DoctorsProps) => {
+interface DoctorsProps extends ScrollViewProps {
+  doctors: Array<Medic>;
+}
+
+const Doctors = ({ doctors, ...rest }: DoctorsProps) => {
   return (
     <ScrollView
       {...rest}
       style={styles.container}
       showsVerticalScrollIndicator={false}
     >
-      <Doctor />
-      <Doctor />
-      <Doctor />
-      <Doctor />
-      <Doctor />
-      <Doctor />
-      <Doctor />
-      <Doctor />
-      <Doctor />
-      <Doctor />
+      {doctors.map((doctor: Medic) => {
+        return <Doctor key={doctor.userID} data={doctor} />;
+      })}
       <LoadMoreButton />
     </ScrollView>
   );
