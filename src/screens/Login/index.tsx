@@ -18,7 +18,6 @@ import SimpleHeader from "../../components/SimpleHeader";
 import Button from "../../components/Button";
 
 import { useAuth } from "../../context/AuthProvider";
-import { useNavigation } from "@react-navigation/native";
 import ModalView from "../../components/ModalView";
 
 interface LoginProps {
@@ -38,11 +37,14 @@ const Login = () => {
     if (credentials.email && credentials.password) {
       const response = await signIn(credentials.email, credentials.password);
 
-      if (!response.data.confirmed) {
-        setError("Usuário não confirmado");
+      if (response.data) {
+        if (!response.data.confirmed) {
+          setError("Usuário não confirmado");
+        }
       } else {
         setError(response.error);
       }
+
       setIsThereError(false);
 
       setLoading(false);

@@ -6,7 +6,6 @@ import validateRegisterInfo from "../../../utils/validateRegisterInfo";
 import Button from "../../Button";
 import FormInput from "../../FormInput";
 import { styles } from "./styles";
-import mask from "../../../utils/mask";
 
 const Phone = ({ nextPage }: RegisterPageProps) => {
   const { userData, setUserData } = useRegister();

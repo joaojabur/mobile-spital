@@ -1,4 +1,10 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 
 import Background from "../../components/Background";
 
@@ -9,13 +15,20 @@ import Card from "../../components/MedicComponents/Card";
 import api from "../../services/api";
 import getWeekday from "../../utils/calculateWeekday";
 import MedicProvider from "../../context/MedicProvider";
+import convertDate from "../../utils/convertDate";
 
-interface ConsultTypeProps {
+export interface ConsultTypeProps {
   type: string;
   price: string;
 }
 
-interface ScheduleProps {
+export interface AppointmentProps {
+  date: string;
+  time: string;
+  inOn: boolean;
+}
+
+export interface ScheduleProps {
   id: number;
   scheduleID: number;
   medicID: number;
@@ -26,12 +39,14 @@ interface ScheduleProps {
 }
 
 export interface MedicPagesProps {
-  nextPage?: () => void;
+  nextPage: () => void;
   previousPage?: () => void;
-  medic?: MedicProps;
+  medic: MedicProps;
   workday?: ScheduleProps;
   loading?: boolean;
   types?: Array<ConsultTypeProps>;
+  day: string;
+  setDay: Dispatch<SetStateAction<string>>;
 }
 
 export interface MedicProps {
@@ -57,14 +72,14 @@ export interface MedicProps {
 }
 
 const Medic = ({ route, navigation }: any) => {
+  const today = new Date();
+  const formattedToday = convertDate(today);
+
+  const [day, setDay] = useState<string>(formattedToday);
+
   const [workday, setWorkday] = useState<ScheduleProps>({} as ScheduleProps);
-  const [schedule, setSchedule] = useState<Array<ScheduleProps>>(
-    [] as Array<ScheduleProps>
-  );
+
   const [medic, setMedic] = useState<MedicProps>({} as MedicProps);
-  const [consultTypes, setConsultTypes] = useState<Array<ConsultTypeProps>>(
-    [] as Array<ConsultTypeProps>
-  );
 
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(0);
@@ -91,16 +106,9 @@ const Medic = ({ route, navigation }: any) => {
     setWorkday(work_day.data[0]);
   }
 
-  async function getConsultTypes() {
-    const types = await api.get(`consult-type?medicID=${medic.id}`);
-
-    setConsultTypes(types.data);
-  }
-
   useEffect(() => {
     setLoading(true);
     getMedicData();
-    getConsultTypes();
     getWorkDay().then(() => {
       setLoading(false);
     });
@@ -112,10 +120,30 @@ const Medic = ({ route, navigation }: any) => {
       medic={medic}
       workday={workday}
       nextPage={nextPage}
+      day={day}
+      setDay={setDay}
     />,
-    <Appointment types={consultTypes} nextPage={nextPage} previousPage={previousPage} />,
-    <Payment nextPage={nextPage} previousPage={previousPage} />,
-    <Card previousPage={previousPage} />,
+    <Appointment
+      medic={medic}
+      nextPage={nextPage}
+      previousPage={previousPage}
+      day={day}
+      setDay={setDay}
+    />,
+    <Payment
+      medic={medic}
+      nextPage={nextPage}
+      previousPage={previousPage}
+      day={day}
+      setDay={setDay}
+    />,
+    <Card
+      nextPage={nextPage}
+      previousPage={previousPage}
+      day={day}
+      setDay={setDay}
+      medic={medic}
+    />,
   ];
 
   function nextPage() {

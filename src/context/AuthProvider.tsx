@@ -82,9 +82,6 @@ export default function AuthProvider({ children }: AuthProviderProps) {
 
       return response;
     } catch (error) {
-      if (error) {
-        console.log(error);
-      }
       return error?.response?.data ?? { error: error.message };
     }
   }

@@ -4,6 +4,7 @@ import Search from "../../screens/Search";
 import { theme } from "../../global/styles/theme";
 import SearchArea from "../../screens/SearchArea";
 import Medic from "../../screens/Medic";
+import OrderSuccess from "../../screens/OrderSuccess";
 
 const SearchStack = createStackNavigator();
 
@@ -24,10 +25,8 @@ const SearchNavigation = () => {
     >
       <SearchStack.Screen name="Search" component={Search} />
       <SearchStack.Screen name="SearchArea" component={SearchArea} />
-      <SearchStack.Screen
-        name="Medic"
-        component={Medic}
-      />
+      <SearchStack.Screen name="Medic" component={Medic} />
+      <SearchStack.Screen name="OrderSuccess" component={OrderSuccess} />
     </SearchStack.Navigator>
   );
 };

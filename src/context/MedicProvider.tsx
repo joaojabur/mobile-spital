@@ -7,8 +7,16 @@ import React, {
   useState,
 } from "react";
 
+interface DateObject {
+  dateString: string;
+  day: number;
+  month: number;
+  timestamp: number;
+  year: number;
+}
+
 interface AppointmentData {
-  date: string;
+  date: DateObject;
   time: string;
   doctorName: string;
   type: string;

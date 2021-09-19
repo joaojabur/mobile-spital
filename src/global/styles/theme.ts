@@ -15,6 +15,7 @@ export const theme = {
     gray: "#CCCCCC",
     darkGray: "#969696",
     red: "#FF0000",
+    darkGreen: "#017213",
 
     googleButton: "#4285F4",
 

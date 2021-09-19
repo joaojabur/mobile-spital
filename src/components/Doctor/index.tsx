@@ -42,7 +42,7 @@ const Doctor = ({ data }: DoctorProps) => {
       <Image
         style={styles.avatar}
         source={{
-          uri: data.url,
+          uri: "https://www.smartei.com.br/blog/wp-content/uploads/2020/10/F52361.jpg",
         }}
       />
 

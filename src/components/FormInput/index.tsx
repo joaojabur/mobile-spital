@@ -3,7 +3,7 @@ import { Text, View, TextInputProps, TextInput } from "react-native";
 import { theme } from "../../global/styles/theme";
 import { styles } from "./styles";
 
-import { TextInputMask, TextInputMaskProps } from "react-native-masked-text";
+import { TextInputMask } from "react-native-masked-text";
 
 interface FormInputProps extends TextInputProps {
   label: string;

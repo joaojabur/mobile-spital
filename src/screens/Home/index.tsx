@@ -15,7 +15,9 @@ import { styles } from "./styles";
 const Home = () => {
   const { user } = useAuth();
   const [page, setPage] = useState<number>(0);
+
   const [doctors, setDoctors] = useState<Array<Medic>>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const navigation = useNavigation();
 
@@ -26,10 +28,14 @@ const Home = () => {
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
 
   async function loadMore() {
-    let { data } = await api.get(
-      `medics?offset=${page}&lat=-21.233574&lon=-47.836621`
-    );
-    setDoctors(data);
+    setLoading(true);
+
+    api
+      .get(`medics?offset=${page}&lat=-21.233574&lon=-47.836621`)
+      .then((response) => {
+        setDoctors(response.data);
+        setLoading(false)
+      });
   }
 
   useEffect(() => {
@@ -105,6 +111,8 @@ const Home = () => {
             { useNativeDriver: false }
           )}
           doctors={doctors}
+          loadMoreFunction={loadMore}
+          loading={loading}
         />
       </View>
     </Background>
