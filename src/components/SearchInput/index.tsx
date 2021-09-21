@@ -6,14 +6,16 @@ import { styles } from "./styles";
 import { Ionicons } from "@expo/vector-icons";
 import { theme } from "../../global/styles/theme";
 
-type SearchInputProps = TextInputProps;
+interface SearchInputProps extends TextInputProps {
+  reloadFunction?: () => void;
+}
 
-const SearchInput = ({ ...rest }: SearchInputProps) => {
+const SearchInput = ({ reloadFunction, ...rest }: SearchInputProps) => {
   const { secondary100, gray } = theme.colors;
 
   return (
     <View style={styles.container}>
-      <RectButton style={styles.button}>
+      <RectButton onPress={reloadFunction} style={styles.button}>
         <Ionicons name="search-outline" size={34} color={secondary100} />
       </RectButton>
       <TextInput

@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { theme } from "../../../global/styles/theme";
 
 const { text700, text500 } = theme.fonts;
-const { dark, darkGray } = theme.colors;
+const { dark, darkGray, error } = theme.colors;
 
 export const styles = StyleSheet.create({
   container: {
@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
   title: {
     fontFamily: text700,
     color: dark,
-    fontSize: 22,
+    fontSize: 18,
     textAlign: "left",
   },
   stars: {
@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
   subtitle: {
     fontFamily: text500,
     color: darkGray,
-    fontSize: 16,
+    fontSize: 12,
     marginTop: 8,
   },
   line: {
@@ -49,16 +49,22 @@ export const styles = StyleSheet.create({
   textTitleText: {
     fontFamily: text700,
     color: dark,
-    fontSize: 14,
+    fontSize: 10,
     marginLeft: -14,
   },
   maxCaracteres: {
     fontFamily: text500,
     color: darkGray,
-    fontSize: 14,
+    fontSize: 12,
   },
   button: {
     width: "100%",
     marginTop: 30,
+  },
+  error: {
+    fontFamily: text700,
+    color: error,
+    fontSize: 12,
+    marginTop: 10,
   },
 });

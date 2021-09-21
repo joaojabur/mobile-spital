@@ -7,4 +7,8 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 24,
     marginBottom: 110,
   },
+  button: {
+    marginTop: 20,
+    width: "100%",
+  },
 });

@@ -18,8 +18,8 @@ export const styles = StyleSheet.create({
     paddingTop: getStatusBarHeight(),
   },
   returnContainer: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     backgroundColor: white,
     borderRadius: 8,
     alignItems: "center",
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontFamily: text700,
-    fontSize: 24,
+    fontSize: 18,
     color: dark,
     textAlign: "center",
   },

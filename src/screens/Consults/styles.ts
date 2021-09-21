@@ -16,11 +16,11 @@ export const styles = StyleSheet.create({
     backgroundColor: primary100,
     borderBottomRightRadius: 120,
     justifyContent: "space-evenly",
-    paddingHorizontal: 30,
+    paddingHorizontal: 15,
   },
   title: {
     fontFamily: text700,
-    fontSize: 36,
+    fontSize: 28,
     color: dark,
   },
   statusBar: {
@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
   },
   statusBarButtonText: {
     fontFamily: text700,
-    fontSize: 20,
+    fontSize: 15,
     textAlign: "center",
   },
 });

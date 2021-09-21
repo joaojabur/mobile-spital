@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   title: {
     fontFamily: text700,
     color: dark,
-    fontSize: 24,
+    fontSize: 20,
   },
   form: {
     width: "100%",

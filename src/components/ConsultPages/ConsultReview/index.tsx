@@ -1,5 +1,11 @@
-import React, { useState } from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  ActivityIndicator,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 import { ConsultPagesProps } from "../../../screens/Consult";
 import SimpleHeader from "../../SimpleHeader";
@@ -11,11 +17,61 @@ import Line from "../../Line";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import TextArea from "../../TextArea";
 import Button from "../../Button";
+import api from "../../../services/api";
+import { useAuth } from "../../../context/AuthProvider";
+import { useNavigation } from "@react-navigation/native";
 
-const ConsultReview = ({ previousPage }: ConsultPagesProps) => {
+const ConsultReview = ({ data, previousPage }: ConsultPagesProps) => {
+  const navigation = useNavigation();
+  const { userID } = useAuth();
+
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const [error, setError] = useState<string | null>(null);
+  const [clientID, setClientID] = useState<string>("");
+
   const [starValue, setStarValue] = useState<number>(0);
+  const [message, setMessage] = useState<string>("");
 
-  const { star, dark } = theme.colors;
+  async function getClientId() {
+    const response = await api.get(`clients?id=${userID}`);
+
+    setClientID(response.data?.id);
+  }
+
+  useEffect(() => {
+    setLoading(true);
+    getClientId().then(() => {
+      setLoading(false);
+    });
+  }, []);
+
+  function handleSubmit() {
+    setLoading(true);
+
+    if (starValue === 0) {
+      setError("Escolha uma estrela");
+      setLoading(false);
+    } else {
+      api
+        .post(`reviews?medicID=${data.medicID}&clientID=${clientID}`, {
+          stars: starValue,
+          description: message,
+        })
+        .then((response: any) => {
+          console.log(response.data);
+
+          if (response.data.success) {
+            navigation.navigate("ReviewSuccess");
+          } else {
+            setError("Erro ao inserir avaliação...");
+          }
+          setLoading(false);
+        });
+    }
+  }
+
+  const { star, dark, primary100 } = theme.colors;
 
   return (
     <>
@@ -64,7 +120,7 @@ const ConsultReview = ({ previousPage }: ConsultPagesProps) => {
           <View style={styles.textTitle}>
             <MaterialCommunityIcons
               name="message-reply-text"
-              size={28}
+              size={20}
               color={dark}
             />
 
@@ -72,14 +128,26 @@ const ConsultReview = ({ previousPage }: ConsultPagesProps) => {
               Avalie com suas próprias palavras
             </Text>
 
-            <Text style={styles.maxCaracteres}>0/300</Text>
+            <Text style={styles.maxCaracteres}>{message.length}/300</Text>
           </View>
 
-          <TextArea />
+          <TextArea
+            value={message}
+            onChangeText={(text) => {
+              setMessage(text);
+            }}
+            maxLength={300}
+          />
 
-          <View style={styles.button}>
-            <Button title="Avaliar" />
-          </View>
+          {error ? <Text style={styles.error}>{error}</Text> : null}
+
+          {loading ? (
+            <ActivityIndicator size={50} color={primary100} />
+          ) : (
+            <View style={styles.button}>
+              <Button onPress={handleSubmit} title="Avaliar" />
+            </View>
+          )}
         </View>
       </ScrollView>
     </>

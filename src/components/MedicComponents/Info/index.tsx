@@ -34,6 +34,29 @@ const Info = ({ nextPage, medic, workday, loading }: MedicPagesProps) => {
   const formattedRating =
     medic?.rating?.length === 1 ? medic?.rating + ".0" : medic?.rating;
 
+  let formattedFrom,
+    formattedTo,
+    hourFrom,
+    minuteFrom,
+    hourTo,
+    minuteTo,
+    endMinuteFrom,
+    endMinuteTo;
+
+  if (workday !== undefined) {
+    formattedFrom = Number(workday.from) / 60;
+    formattedTo = Number(workday.to) / 60;
+
+    hourFrom = formattedFrom.toString().split(".")[0];
+    minuteFrom = formattedFrom.toString().split(".")[1];
+
+    hourTo = formattedTo.toString().split(".")[0];
+    minuteTo = formattedTo.toString().split(".")[1];
+
+    endMinuteFrom = minuteFrom ? Number(minuteFrom) * 6 : "00";
+    endMinuteTo = minuteTo ? Number(minuteTo) * 6 : "00";
+  }
+
   return (
     <View style={styles.container}>
       <Animated.View style={styles.header}>
@@ -98,13 +121,11 @@ const Info = ({ nextPage, medic, workday, loading }: MedicPagesProps) => {
           style={styles.info}
         >
           <View style={styles.infoToday}>
-            <Text style={styles.infoTodayText}>
-              Horário de trabalho hoje:{" "}
-              <Text style={styles.infoTodayTextBold}>
-                {workday === undefined
-                  ? "Descansando 😴"
-                  : `${workday.from} ${workday.to}`}
-              </Text>
+            <Text style={styles.infoTodayText}>Horário de trabalho hoje: </Text>
+            <Text style={styles.infoTodayTextBold}>
+              {workday === undefined
+                ? "Descansando 😴"
+                : `${hourFrom}:${endMinuteFrom} - ${hourTo}:${endMinuteTo}`}
             </Text>
           </View>
 

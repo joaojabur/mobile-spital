@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
   timesBoxText: {
     fontFamily: text700,
     color: white,
-    fontSize: 16,
+    fontSize: 14,
   },
   types: {
     flexDirection: "row",
@@ -83,14 +83,14 @@ export const styles = StyleSheet.create({
     fontFamily: text500,
     color: dark,
     textAlign: "center",
-    fontSize: 16,
+    fontSize: 14,
     alignSelf: "center",
   },
   error: {
     marginTop: 10,
     fontFamily: text700,
     color: error,
-    fontSize: 16,
+    fontSize: 12,
     paddingHorizontal: 10,
     textAlign: "left",
   },

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  ActivityIndicator,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -7,10 +8,15 @@ import {
   View,
 } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
+import { TextInputMask } from "react-native-masked-text";
 import Background from "../../components/Background";
+import Button from "../../components/Button";
 import SimpleHeader from "../../components/SimpleHeader";
 import Input from "../../components/TextInput";
 import { useAuth } from "../../context/AuthProvider";
+import { theme } from "../../global/styles/theme";
+import api from "../../services/api";
+import refreshUserValidate from "../../utils/refreshUserValidate";
 import { styles } from "./styles";
 
 interface NewUserValues {
@@ -20,9 +26,22 @@ interface NewUserValues {
 }
 
 const Edit = () => {
+  const { userID, setUser } = useAuth();
+  const { primary100 } = theme.colors;
+
+  const [loading, setLoading] = useState<boolean>(false);
   const [newUserValues, setNewUserValues] = useState<NewUserValues>(
     {} as NewUserValues
   );
+  const [success, setSuccess] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [errors, setErrors] = useState<NewUserValues>(
+    refreshUserValidate(newUserValues)
+  );
+
+  useEffect(() => {
+    setErrors(refreshUserValidate(newUserValues));
+  }, [newUserValues]);
 
   const { user } = useAuth();
 
@@ -34,6 +53,34 @@ const Edit = () => {
       phoneNumber: user.phoneNumber,
     });
   }, []);
+
+  async function handleSubmit() {
+    setLoading(true);
+    const loopedErrors = Object.values(errors);
+    if (loopedErrors.length > 0) {
+      setError("O formulário possui erros");
+      setLoading(false);
+      setSuccess(null);
+    } else {
+      setError(null);
+
+      await api
+        .put(`clients/${userID}`, {
+          fullName: `${newUserValues.firstName} ${newUserValues.lastName}`,
+          phoneNumber: newUserValues.phoneNumber,
+        })
+        .then(() => {
+          setLoading(false);
+          setUser({
+            ...user,
+            firstName: newUserValues.firstName,
+            lastName: newUserValues.lastName,
+            phoneNumber: newUserValues.phoneNumber,
+          });
+          setSuccess("Dados atualizados com sucesso!");
+        });
+    }
+  }
 
   return (
     <KeyboardAvoidingView
@@ -64,6 +111,9 @@ const Edit = () => {
                 setNewUserValues({ ...newUserValues, firstName: text });
               }}
             />
+            {errors.firstName ? (
+              <Text style={styles.error}>{errors.firstName}</Text>
+            ) : null}
 
             <Text style={styles.inputsLabel}>Sobrenome</Text>
             <Input
@@ -73,15 +123,34 @@ const Edit = () => {
                 setNewUserValues({ ...newUserValues, lastName: text });
               }}
             />
+            {errors.lastName ? (
+              <Text style={styles.error}>{errors.lastName}</Text>
+            ) : null}
 
             <Text style={styles.inputsLabel}>Telefone</Text>
-            <Input
+            <TextInputMask
+              type={"cel-phone"}
               placeholder="(11) 9 9131-3131"
               value={newUserValues.phoneNumber}
+              style={styles.input}
               onChangeText={(text) => {
                 setNewUserValues({ ...newUserValues, phoneNumber: text });
               }}
             />
+            {errors.phoneNumber ? (
+              <Text style={styles.error}>{errors.phoneNumber}</Text>
+            ) : null}
+
+            {error ? <Text style={styles.error}>{error}</Text> : null}
+            {success ? <Text style={styles.success}>{success}</Text> : null}
+
+            {loading ? (
+              <ActivityIndicator size={50} color={primary100} />
+            ) : (
+              <View style={styles.button}>
+                <Button onPress={handleSubmit} title="Atualizar dados" />
+              </View>
+            )}
           </View>
         </View>
       </Background>

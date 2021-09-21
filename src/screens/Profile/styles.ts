@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     width: "100%",
-    height: 150,
+    height: 125,
     borderBottomRightRadius: 110,
     backgroundColor: primary100,
     paddingTop: getStatusBarHeight(),
@@ -27,8 +27,8 @@ export const styles = StyleSheet.create({
   name: {
     fontFamily: text700,
     color: dark,
-    fontSize: 24,
-    marginLeft: 20,
+    fontSize: 20,
+    marginLeft: 24,
   },
   box: {
     flexDirection: "row",
@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
   boxText: {
     fontFamily: text700,
     color: primary100,
-    fontSize: 16,
+    fontSize: 12,
     textAlign: "center",
     marginLeft: 30,
   },
@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 24,
     width: "90%",
-    height: 168,
+    height: 140,
     backgroundColor: white,
     shadowColor: dark,
     shadowOffset: {
@@ -77,7 +77,7 @@ export const styles = StyleSheet.create({
   levelTitle: {
     fontFamily: text700,
     color: dark,
-    fontSize: 30,
+    fontSize: 24,
   },
   levelBox: {
     width: "100%",
@@ -95,11 +95,11 @@ export const styles = StyleSheet.create({
   levelTextItem: {
     fontFamily: text400,
     color: dark,
-    fontSize: 18,
+    fontSize: 14,
   },
   levelBar: {
     width: "100%",
-    height: 50,
+    height: 40,
     borderRadius: 30,
     backgroundColor: gray,
     alignItems: "flex-start",
@@ -115,7 +115,7 @@ export const styles = StyleSheet.create({
   levelBarExpText: {
     fontFamily: text700,
     color: white,
-    fontSize: 20,
+    fontSize: 16,
   },
   leaveButton: {
     width: 60,

@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
   header: {
     paddingTop: getStatusBarHeight(),
     width: "100%",
-    height: 280,
+    height: 250,
     backgroundColor: primary100,
     borderBottomRightRadius: 120,
     justifyContent: "flex-start",
@@ -36,13 +36,13 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   medicInfo: {
-    marginTop: 50,
+    marginTop: 35,
     flexDirection: "row",
     width: "100%",
   },
   medicInfoAvatar: {
-    width: 90,
-    height: 90,
+    width: 80,
+    height: 80,
     borderRadius: 45,
   },
   medicInfoText: {
@@ -53,12 +53,12 @@ export const styles = StyleSheet.create({
   medicInfoTextName: {
     fontFamily: text700,
     color: dark,
-    fontSize: 24,
+    fontSize: 20,
   },
   medicInfoTextArea: {
     fontFamily: text400,
     color: dark,
-    fontSize: 14,
+    fontSize: 12,
   },
   button: {
     width: "85%",
@@ -78,19 +78,20 @@ export const styles = StyleSheet.create({
     borderColor: overlay,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     paddingHorizontal: 16,
   },
   infoTodayText: {
     fontFamily: text400,
     color: dark,
-    fontSize: 14,
+    fontSize: 10,
     textAlign: "center",
   },
   infoTodayTextBold: {
     fontFamily: text700,
     textAlign: "center",
     marginLeft: 2,
+    fontSize: 10,
   },
   address: {
     marginTop: 30,
@@ -102,15 +103,15 @@ export const styles = StyleSheet.create({
     backgroundColor: white,
     borderWidth: 0.2,
     borderColor: overlay,
+    alignItems: "flex-start",
+    justifyContent: "space-between",
   },
   addressTitle: {
     fontFamily: text700,
     color: dark,
-    fontSize: 20,
+    fontSize: 14,
   },
   addressText: {
-    marginTop: 10,
-    marginBottom: 10,
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
@@ -120,10 +121,10 @@ export const styles = StyleSheet.create({
     marginLeft: 6,
     fontFamily: text400,
     color: dark,
-    fontSize: 13,
+    fontSize: 10,
+    paddingRight: 4,
   },
   addressDistance: {
-    marginTop: 5,
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
@@ -135,12 +136,12 @@ export const styles = StyleSheet.create({
   seeMap: {
     fontFamily: text700,
     color: secondary100,
-    fontSize: 14,
+    fontSize: 12,
   },
   reviews: {
     marginTop: 30,
     width: "100%",
-    height: 175,
+    height: 160,
     backgroundColor: secondary100,
     borderRadius: 8,
   },
@@ -165,13 +166,13 @@ export const styles = StyleSheet.create({
   reviewsTextLabel: {
     fontFamily: text700,
     color: dark,
-    fontSize: 22,
+    fontSize: 18,
     alignItems: "center",
   },
   reviewsStarText: {
     fontFamily: text700,
     color: white,
-    fontSize: 40,
+    fontSize: 30,
   },
   academy: {
     marginTop: 30,
@@ -185,7 +186,7 @@ export const styles = StyleSheet.create({
   academyTitle: {
     fontFamily: text700,
     color: dark,
-    fontSize: 30,
+    fontSize: 22,
   },
   academyContent: {
     marginTop: 20,
@@ -196,12 +197,12 @@ export const styles = StyleSheet.create({
   },
   academyText: {
     fontFamily: text400,
-    fontSize: 20,
+    fontSize: 16,
     color: dark,
     marginBottom: 20,
   },
   academyTextBold: {
     fontFamily: text700,
-    fontSize: 22,
+    fontSize: 16,
   },
 });

@@ -1,4 +1,8 @@
 import { StyleSheet } from "react-native";
+import { theme } from "../../global/styles/theme";
+
+const { dark } = theme.colors;
+const { text700 } = theme.fonts;
 
 export const styles = StyleSheet.create({
   container: {
@@ -13,5 +17,11 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
+  },
+  empty: {
+    fontFamily: text700,
+    color: dark,
+    fontSize: 22,
+    textAlign: "center",
   },
 });

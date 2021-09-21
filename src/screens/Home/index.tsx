@@ -8,12 +8,15 @@ import Background from "../../components/Background";
 import Categories from "../../components/Categories";
 import Doctors, { Medic } from "../../components/Doctors";
 import { useAuth } from "../../context/AuthProvider";
+import { useLocation } from "../../context/LocationProvider";
 import api from "../../services/api";
 
 import { styles } from "./styles";
 
 const Home = () => {
+  const { coordinates } = useLocation();
   const { user } = useAuth();
+
   const [page, setPage] = useState<number>(0);
 
   const [doctors, setDoctors] = useState<Array<Medic>>([]);
@@ -31,10 +34,13 @@ const Home = () => {
     setLoading(true);
 
     api
-      .get(`medics?offset=${page}&lat=-21.233574&lon=-47.836621`)
+      .get(
+        `medics?offset=${page}&lat=${coordinates.lat}&lon=${coordinates.lng}`
+      )
       .then((response) => {
-        setDoctors(response.data);
-        setLoading(false)
+        setDoctors((previousState) => [...previousState, ...response.data]);
+        setPage(page + 1);
+        setLoading(false);
       });
   }
 
@@ -50,12 +56,12 @@ const Home = () => {
             styles.header,
             {
               height: scrollY.interpolate({
-                inputRange: [0, 250],
-                outputRange: [250, 0],
+                inputRange: [0, 230],
+                outputRange: [230, 0],
                 extrapolate: "clamp",
               }),
               opacity: scrollY.interpolate({
-                inputRange: [0, 250],
+                inputRange: [0, 230],
                 outputRange: [1, 0],
                 extrapolate: "clamp",
               }),

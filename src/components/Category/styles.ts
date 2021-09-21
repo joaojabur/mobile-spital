@@ -22,10 +22,12 @@ export const styles = StyleSheet.create({
     elevation: 2,
     alignItems: "center",
     justifyContent: "space-evenly",
+    paddingHorizontal: 10,
   },
   label: {
     fontFamily: text700,
     color: dark,
     fontSize: 9,
+    textAlign: "center",
   },
 });

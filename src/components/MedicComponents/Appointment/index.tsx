@@ -99,7 +99,6 @@ const Appointment = ({
 
   const completeDate = `${appointmentData?.date?.month}/${formattedDay}/${appointmentData?.date?.year}`;
   const datedCompleteDate = new Date(completeDate);
-  console.log(completeDate);
 
   const weekDay = datedCompleteDate.getDay();
 
@@ -218,8 +217,6 @@ const Appointment = ({
                         isReserved = true;
                       }
                     }
-
-                    console.log(isReserved);
 
                     if (isReserved) {
                       return (

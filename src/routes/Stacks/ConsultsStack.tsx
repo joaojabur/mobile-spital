@@ -3,6 +3,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Consults from "../../screens/Consults";
 import { theme } from "../../global/styles/theme";
 import Consult from "../../screens/Consult";
+import RefundSuccess from "../../screens/RefundSuccess";
+import ReviewSuccess from "../../screens/ReviewSuccess";
 
 const ConsultsStack = createStackNavigator();
 
@@ -23,6 +25,8 @@ const ConsultsNavigation = () => {
     >
       <ConsultsStack.Screen name="Consults" component={Consults} />
       <ConsultsStack.Screen name="Consult" component={Consult} />
+      <ConsultsStack.Screen name="RefundSuccess" component={RefundSuccess} />
+      <ConsultsStack.Screen name="ReviewSuccess" component={ReviewSuccess} />
     </ConsultsStack.Navigator>
   );
 };

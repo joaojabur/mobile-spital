@@ -5,7 +5,7 @@ import { styles } from "./styles";
 type TextAreaProps = TextInputProps;
 
 const TextArea = ({ ...rest }: TextAreaProps) => {
-  return <TextInput placeholder="Digite sua experiência..." {...rest} style={styles.container} />;
+  return <TextInput placeholder="Digite sua experiência... (opcional)" {...rest} style={styles.container} />;
 };
 
 export default TextArea;

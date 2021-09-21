@@ -25,7 +25,7 @@ const SimpleHeader = ({ title, component, action, returnFunction }: SimpleHeader
   return (
     <View style={styles.container}>
       <RectButton onPress={returnFunction ? returnFunction : handleGoBack} style={styles.returnContainer}>
-        <Entypo name="chevron-left" size={34} color={dark} />
+        <Entypo name="chevron-left" size={30} color={dark} />
       </RectButton>
 
       <Text style={styles.title}>{title}</Text>

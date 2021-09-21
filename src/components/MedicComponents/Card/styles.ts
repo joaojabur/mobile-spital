@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
   title: {
     fontFamily: text700,
     color: dark,
-    fontSize: 24,
+    fontSize: 20,
   },
   form: {
     marginTop: 10,
@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
   inputsLabel: {
     fontFamily: text500,
     color: gray,
-    fontSize: 18,
+    fontSize: 14,
     marginBottom: 5,
     paddingLeft: 5,
     marginTop: 10,
@@ -50,14 +50,14 @@ export const styles = StyleSheet.create({
   },
   input: {
     width: "100%",
-    height: 66,
+    height: 50,
     color: dark,
     backgroundColor: white,
     borderWidth: 1,
     borderColor: primary100,
     borderRadius: 8,
     paddingHorizontal: 20,
-    fontSize: 16,
+    fontSize: 12,
   },
   error: {
     fontFamily: text700,

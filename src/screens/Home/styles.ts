@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   logo: {
     fontFamily: text700,
     color: white,
-    fontSize: 40,
+    fontSize: 34,
   },
   profile: {
     width: "100%",
@@ -34,12 +34,12 @@ export const styles = StyleSheet.create({
   hello: {
     fontFamily: text700,
     color: dark,
-    fontSize: 32,
+    fontSize: 26,
   },
   name: {
     fontFamily: text500,
     color: secondary100,
-    fontSize: 26,
+    fontSize: 22,
     marginTop: -6,
     marginLeft: 12,
   },
@@ -55,11 +55,16 @@ export const styles = StyleSheet.create({
   title: {
     fontFamily: text700,
     color: dark,
-    fontSize: 20,
+    fontSize: 16,
   },
   subtitle: {
     fontFamily: text500,
     color: gray,
-    fontSize: 20,
+    fontSize: 14,
+  },
+  modal: {
+    height: "95%",
+    width: "95",
+    backgroundColor: white,
   },
 });

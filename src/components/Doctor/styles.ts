@@ -40,12 +40,12 @@ export const styles = StyleSheet.create({
   name: {
     fontFamily: text700,
     color: dark,
-    fontSize: 14,
+    fontSize: 12,
   },
   area: {
     fontFamily: text600,
     color: darkGray,
-    fontSize: 12,
+    fontSize: 8,
   },
   rating: {
     marginTop: 18,
@@ -57,6 +57,7 @@ export const styles = StyleSheet.create({
     fontFamily: text700,
     marginLeft: 4,
     color: dark,
+    fontSize: 10,
   },
   distance: {
     flex: 1,
@@ -69,6 +70,6 @@ export const styles = StyleSheet.create({
   distanceText: {
     fontFamily: text500,
     color: darkGray,
-    fontSize: 16,
+    fontSize: 12,
   },
 });

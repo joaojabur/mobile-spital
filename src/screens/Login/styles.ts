@@ -10,29 +10,29 @@ export const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    paddingHorizontal: 42,
+    paddingHorizontal: 30,
     paddingVertical: 36,
   },
   title: {
     fontFamily: text700,
     color: dark,
-    fontSize: 26,
+    fontSize: 20,
   },
   form: {
     width: "100%",
     flex: 1,
-    marginTop: 30,
+    marginTop: 20,
   },
   label: {
     fontFamily: text400,
     color: gray,
-    fontSize: 20,
+    fontSize: 16,
     marginBottom: 10,
     marginTop: 10,
   },
   buttonContainer: {
     width: "100%",
-    marginTop: 30,
+    marginTop: 20,
   },
   hero: {
     alignSelf: "flex-end",

@@ -7,11 +7,11 @@ const { text700 } = theme.fonts;
 export const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: 80,
+    padding: 10,
     flexDirection: "row",
     borderRadius: 8,
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "space-evenly",
   },
   iconContainer: {
     width: 52,
@@ -20,13 +20,12 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: 20,
+    marginLeft: 0,
   },
   title: {
     color: white,
     fontFamily: text700,
-    fontSize: 20,
-    marginLeft: 24,
+    fontSize: 14,
     textAlign: "center",
   },
 });

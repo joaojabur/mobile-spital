@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, Animated, Slider, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 import Background from "../../components/Background";
-import Doctors from "../../components/Doctors";
+import Doctors, { Medic } from "../../components/Doctors";
 import SearchInput from "../../components/SearchInput";
 import SimpleHeader from "../../components/SimpleHeader";
 import { Feather } from "@expo/vector-icons";
@@ -12,20 +12,64 @@ import { styles } from "./styles";
 import { theme } from "../../global/styles/theme";
 import ModalView from "../../components/ModalView";
 import Button from "../../components/Button";
-import { RectButton } from "react-native-gesture-handler";
+import api from "../../services/api";
+import { useLocation } from "../../context/LocationProvider";
 
 const SearchArea = ({ route }: any) => {
-  const { white } = theme.colors;
+  const area = route.params.goTo;
 
-  const [price, setPrice] = useState(2000);
-  const [distance, setDistance] = useState(100);
+  let capitalizeArea = area.charAt(0).toUpperCase() + area.slice(1);
+  if (capitalizeArea === "Alergistas-e-imunologista") {
+    capitalizeArea = "Alergista e Imunologista";
+  }
+
+  const { coordinates } = useLocation();
+  const [page, setPage] = useState<number>(0);
+  const [medicName, setMedicName] = useState<string>("");
+  const [price, setPrice] = useState<number>(2000);
+  const [distance, setDistance] = useState<number>(100);
+
+  const [doctors, setDoctors] = useState<Array<Medic>>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const { white } = theme.colors;
 
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
 
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
   const { dark, primary100 } = theme.colors;
 
-  const area = route.params.goTo;
+  async function loadMore() {
+    setLoading(true);
+    let name = medicName.replace(/[^0-9a-zA-Z:,]+/, "").toLowerCase();
+
+    api
+      .get(
+        `medics/${capitalizeArea}?offset=${page}&lat=${coordinates.lat}&lon=${coordinates.lng}&distance=${distance}&price=${price}&name=${name}`
+      )
+      .then((response) => {
+        setDoctors((previousState) => [...previousState, ...response.data]);
+        setPage(page + 1);
+        setLoading(false);
+      });
+  }
+
+  async function reload() {
+    let name = medicName.replace(/[^0-9a-zA-Z:,]+/, "").toLowerCase();
+    api
+      .get(
+        `medics/${capitalizeArea}?offset=${page}&lat=${coordinates.lat}&lon=${coordinates.lng}&distance=${distance}&price=${price}&name=${name}`
+      )
+      .then((response) => {
+        setDoctors(response.data);
+        setPage(1);
+        setLoading(false);
+      });
+  }
+
+  useEffect(() => {
+    loadMore();
+  }, [medicName, price, distance]);
 
   function handleOpenFilterModal() {
     setIsFilterOpen(true);
@@ -47,7 +91,11 @@ const SearchArea = ({ route }: any) => {
         />
 
         <View style={styles.search}>
-          <SearchInput />
+          <SearchInput
+            reloadFunction={reload}
+            value={medicName}
+            onChangeText={(text: string) => setMedicName(text)}
+          />
         </View>
 
         <Doctors
@@ -61,19 +109,9 @@ const SearchArea = ({ route }: any) => {
             ],
             { useNativeDriver: false }
           )}
-          doctors={[
-            {
-              firstName: "Elon",
-              lastName: "Musk",
-              phoneNumber: "(16) 99798-4147",
-              area: "Cardiologista",
-              email: "elonzin2005@gmail.com",
-              userID: 2,
-              distance: 40,
-              star: "5",
-              url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Elon_Musk_Royal_Society.jpg/330px-Elon_Musk_Royal_Society.jpg",
-            },
-          ]}
+          doctors={doctors}
+          loadMoreFunction={loadMore}
+          loading={loading}
         />
       </View>
 

@@ -8,20 +8,20 @@ export const styles = StyleSheet.create({
   container: {
     marginTop: 20,
     width: "100%",
-    height: 66,
+    height: 56,
     marginBottom: 20
   },
   label: {
     fontFamily: text500,
     color: darkGray,
-    fontSize: 20,
+    fontSize: 14,
     marginBottom: 10,
   },
   input: {
     width: "100%",
     height: "100%",
     fontFamily: text600,
-    fontSize: 18,
+    fontSize: 14,
     backgroundColor: white,
     color: dark,
     borderWidth: 1,
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
   error: {
     fontFamily: text600,
     color: error,
-    fontSize: 16,
+    fontSize: 12,
     marginTop: 2,
   },
 });

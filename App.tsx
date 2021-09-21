@@ -1,8 +1,6 @@
 import React from "react";
 import { StatusBar } from "react-native";
 
-import Landing from "./src/screens/Landing";
-
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 import {
@@ -14,6 +12,7 @@ import {
 import Background from "./src/components/Background";
 import Routes from "./src/routes";
 import AuthProvider from "./src/context/AuthProvider";
+import LocationProvider from "./src/context/LocationProvider";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -38,14 +37,16 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <Background>
-        <StatusBar
-          barStyle="light-content"
-          backgroundColor="transparent"
-          translucent
-        />
-        <Routes />
-      </Background>
+      <LocationProvider>
+        <Background>
+          <StatusBar
+            barStyle="light-content"
+            backgroundColor="transparent"
+            translucent
+          />
+          <Routes />
+        </Background>
+      </LocationProvider>
     </AuthProvider>
   );
 }

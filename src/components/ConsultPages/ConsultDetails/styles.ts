@@ -1,8 +1,15 @@
 import { StyleSheet } from "react-native";
 import { theme } from "../../../global/styles/theme";
 
-const { dark, darkGray, secondary100, secondary30, primary100, white } =
-  theme.colors;
+const {
+  dark,
+  darkGray,
+  secondary100,
+  secondary30,
+  primary100,
+  white,
+  correct,
+} = theme.colors;
 const { text700, text500, text400 } = theme.fonts;
 
 export const styles = StyleSheet.create({
@@ -19,8 +26,8 @@ export const styles = StyleSheet.create({
     paddingVertical: 30,
   },
   image: {
-    width: 84,
-    height: 84,
+    width: 64,
+    height: 64,
     borderRadius: 42,
   },
   medic: {
@@ -30,17 +37,17 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   name: {
-    marginLeft: -45,
+    marginLeft: 0,
   },
   nameText: {
     fontFamily: text700,
     color: dark,
-    fontSize: 24,
+    fontSize: 16,
   },
   areaText: {
     fontFamily: text500,
     color: darkGray,
-    fontSize: 16,
+    fontSize: 12,
   },
   seeProfile: {
     padding: 5,
@@ -48,7 +55,7 @@ export const styles = StyleSheet.create({
   seeProfileText: {
     fontFamily: text700,
     color: secondary100,
-    fontSize: 16,
+    fontSize: 12,
   },
   paid: {
     marginTop: 30,
@@ -64,7 +71,7 @@ export const styles = StyleSheet.create({
   paidText: {
     fontFamily: text700,
     color: dark,
-    fontSize: 18,
+    fontSize: 14,
     paddingLeft: 10,
   },
   details: {
@@ -76,7 +83,7 @@ export const styles = StyleSheet.create({
     marginTop: 30,
     fontFamily: text500,
     color: dark,
-    fontSize: 20,
+    fontSize: 16,
     textAlign: "left",
   },
   type: {
@@ -91,8 +98,8 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   TypeQuantityBall: {
-    width: 48,
-    height: 48,
+    width: 40,
+    height: 40,
     backgroundColor: primary100,
     alignItems: "center",
     justifyContent: "center",
@@ -101,19 +108,19 @@ export const styles = StyleSheet.create({
   TypeQuantityBallText: {
     fontFamily: text700,
     color: dark,
-    fontSize: 28,
+    fontSize: 22,
     textAlign: "center",
   },
   typeConsult: {
     marginLeft: 10,
     fontFamily: text400,
     color: dark,
-    fontSize: 18,
+    fontSize: 14,
   },
   typePrice: {
     fontFamily: text700,
     color: dark,
-    fontSize: 18,
+    fontSize: 14,
   },
   payment: {
     width: "100%",
@@ -124,7 +131,7 @@ export const styles = StyleSheet.create({
   paymentMethod: {
     fontFamily: text400,
     color: dark,
-    fontSize: 18,
+    fontSize: 16,
   },
   paymentCard: {
     flexDirection: "row",
@@ -138,7 +145,7 @@ export const styles = StyleSheet.create({
   paymentCardLastNumbers: {
     fontFamily: text700,
     color: dark,
-    fontSize: 14,
+    fontSize: 12,
     marginLeft: 10,
   },
   address: {
@@ -147,12 +154,12 @@ export const styles = StyleSheet.create({
   addressTitle: {
     fontFamily: text400,
     color: dark,
-    fontSize: 16,
+    fontSize: 14,
   },
   addressStreet: {
     fontFamily: text700,
     color: dark,
-    fontSize: 16,
+    fontSize: 12,
     marginTop: 6,
   },
   assess: {
@@ -170,6 +177,7 @@ export const styles = StyleSheet.create({
     shadowRadius: 3.5,
     elevation: 3,
     borderRadius: 8,
+    marginBottom: 80,
   },
   assessTitle: {
     fontFamily: text700,
@@ -187,5 +195,78 @@ export const styles = StyleSheet.create({
     color: dark,
     fontSize: 16,
     marginLeft: 6,
+  },
+  cancelButton: {
+    width: "100%",
+    padding: 10,
+    alignSelf: "center",
+    marginBottom: 10,
+  },
+  cancel: {
+    fontFamily: text700,
+    color: secondary100,
+    fontSize: 22,
+    textAlign: "center",
+  },
+  sure: {
+    width: "90%",
+    height: "80%",
+    backgroundColor: white,
+    alignSelf: "center",
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    paddingHorizontal: 10,
+    paddingVertical: 40,
+  },
+  sureTitle: {
+    fontFamily: text700,
+    color: dark,
+    fontSize: 24,
+    textAlign: "center",
+  },
+  sureSubtitle: {
+    fontFamily: text500,
+    color: dark,
+    fontSize: 16,
+    textAlign: "center",
+    marginTop: 10,
+  },
+  sureButtons: {
+    flexDirection: "row",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  sureButtonsWrap: {
+    width: "49%",
+    height: 60,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: darkGray,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  sureButtonsWrapText: {
+    fontFamily: text700,
+    color: dark,
+    fontSize: 20,
+  },
+  done: {
+    marginTop: 10,
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    marginBottom: 20,
+  },
+  doneImg: {
+    width: 40,
+    height: 40,
+  },
+  doneText: {
+    fontFamily: text700,
+    color: correct,
+    fontSize: 17,
   },
 });

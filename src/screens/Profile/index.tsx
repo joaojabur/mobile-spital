@@ -10,13 +10,23 @@ import { styles } from "./styles";
 import { theme } from "../../global/styles/theme";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../../context/AuthProvider";
+import levels, { LevelProps } from "../../utils/levels";
+import calcPercentage from "../../utils/calcPercentage";
 
 const Profile = () => {
   const { signOut, user } = useAuth();
 
+  let level = Math.floor(user?.xp ** (1 / 2) / 4 - 1);
+
+  if (level === -1 || level === 0) {
+    level = 1;
+  }
+
   const navigation = useNavigation();
   const { primary100, white } = theme.colors;
-  let porcentage = 60;
+
+  const levelObj = levels.filter((obj: LevelProps) => obj.level === level);
+  const percentage = calcPercentage(levelObj[0]?.nextLevelXp, user?.xp);
 
   function handleGoEdit() {
     navigation.navigate("Edit");
@@ -43,7 +53,7 @@ const Profile = () => {
           activeOpacity={0.7}
           style={styles.box}
         >
-          <Feather name="edit" size={30} color={primary100} />
+          <Feather name="edit" size={26} color={primary100} />
           <Text style={styles.boxText}>Editar informações do perfil</Text>
         </TouchableOpacity>
 
@@ -52,13 +62,17 @@ const Profile = () => {
 
           <View style={styles.levelBox}>
             <View style={styles.levelText}>
-              <Text style={styles.levelTextItem}>Nível 21</Text>
-              <Text style={styles.levelTextItem}>350/500</Text>
+              <Text style={styles.levelTextItem}>
+                Nível {level === -1 ? 1 : level}
+              </Text>
+              <Text style={styles.levelTextItem}>
+                {user?.xp}/{levelObj[0]?.nextLevelXp}
+              </Text>
             </View>
 
             <View style={styles.levelBar}>
-              <View style={[styles.levelBarExp, { width: `${porcentage}%` }]}>
-                <Text style={styles.levelBarExpText}>350</Text>
+              <View style={[styles.levelBarExp, { width: `${percentage}%` }]}>
+                <Text style={styles.levelBarExpText}>{user?.xp}</Text>
               </View>
             </View>
           </View>

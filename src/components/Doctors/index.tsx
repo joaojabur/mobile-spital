@@ -1,13 +1,11 @@
 import React from "react";
-import {
-  ActivityIndicator,
-  ScrollView,
-  ScrollViewProps,
-} from "react-native";
+import { ActivityIndicator, ScrollView, ScrollViewProps } from "react-native";
 import Doctor from "../Doctor";
 import LoadMoreButton from "../LoadMoreButton";
 import { styles } from "./styles";
 import { theme } from "../../global/styles/theme";
+import Button from "../Button";
+import { RectButton } from "react-native-gesture-handler";
 
 export interface Medic {
   id: number;
@@ -54,9 +52,15 @@ const Doctors = ({
       })}
 
       {loading ? (
-        <ActivityIndicator size={50} color={primary100} />
+        <ActivityIndicator
+          style={{ marginTop: 20 }}
+          size={50}
+          color={primary100}
+        />
       ) : (
-        <LoadMoreButton />
+        <RectButton style={styles.button}>
+          <Button onPress={loadMoreFunction} title="Carregar mais" />
+        </RectButton>
       )}
     </ScrollView>
   );

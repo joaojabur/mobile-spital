@@ -1,9 +1,14 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
+import { AppointmentsProps } from "../../screens/Consults";
 import { styles } from "./styles";
 
-const ConsultsViewItem = () => {
+interface ConsultsViewItemProps {
+  data: AppointmentsProps;
+}
+
+const ConsultsViewItem = ({ data }: ConsultsViewItemProps) => {
   const navigation = useNavigation();
 
   function handleGoConsult() {
@@ -11,6 +16,9 @@ const ConsultsViewItem = () => {
       screen: "Consults",
       params: {
         screen: "Consult",
+        params: {
+          scheduleID: data.scheduleID,
+        },
       },
     });
   }
@@ -31,20 +39,22 @@ const ConsultsViewItem = () => {
           />
 
           <View style={styles.profileInfoData}>
-            <Text style={styles.name}>Dr. Jason</Text>
-            <Text style={styles.area}>Cardiologista</Text>
+            <Text style={styles.name}>Dr. {data.first_name}</Text>
+            <Text style={styles.area}>{data.area}</Text>
           </View>
         </View>
 
         <View style={styles.profileConsult}>
           <View style={styles.status}>
-            <Text style={styles.statusText}>Ativo</Text>
+            <Text style={styles.statusText}>
+              {!data.confirmed ? "Ativa" : "Finalizada"}
+            </Text>
           </View>
         </View>
       </View>
       <View style={styles.date}>
-        <Text style={styles.dateText}>03/05/2021</Text>
-        <Text style={styles.dateText}>14:00</Text>
+        <Text style={styles.dateText}>{data.date}</Text>
+        <Text style={styles.dateText}>{data.time}</Text>
       </View>
     </TouchableOpacity>
   );

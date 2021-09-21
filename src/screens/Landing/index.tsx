@@ -40,7 +40,7 @@ const Landing = () => {
       <Background>
         <View style={styles.container}>
           <Text style={styles.logo}>Spital</Text>
-          <DoctorsSvg width={345} height={255} style={styles.image} />
+          <DoctorsSvg width={290} height={200} style={styles.image} />
           <Text style={[styles.title, { marginBottom: 40 }]}>
             Como deseja continuar?
           </Text>

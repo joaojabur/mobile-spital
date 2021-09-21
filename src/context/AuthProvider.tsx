@@ -4,7 +4,11 @@ import React, {
   createContext,
   useContext,
   ReactNode,
+  Dispatch,
+  SetStateAction,
 } from "react";
+import * as Location from "expo-location";
+import { LocationObject } from "expo-location";
 
 import api from "../services/api";
 import { AsyncStorage } from "react-native";
@@ -19,6 +23,7 @@ interface User {
 
 interface AuthContextData {
   user: User;
+  setUser: Dispatch<SetStateAction<User>>;
   authenticated: boolean;
   confirmed: boolean;
   userID: number | null;
@@ -120,13 +125,13 @@ export default function AuthProvider({ children }: AuthProviderProps) {
     const response = await api.post("clients", {
       ...user,
     });
-    console.log(response);
 
     return response;
   }
 
   let value = {
     user,
+    setUser,
     userID,
     authenticated: user !== null,
     signIn: login,

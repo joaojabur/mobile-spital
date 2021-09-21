@@ -51,12 +51,12 @@ export const styles = StyleSheet.create({
   },
   name: {
     fontFamily: text700,
-    fontSize: 18,
+    fontSize: 14,
     color: dark,
   },
   area: {
     fontFamily: text600,
-    fontSize: 12,
+    fontSize: 8,
     color: darkGray,
   },
   profileConsult: {
@@ -66,7 +66,7 @@ export const styles = StyleSheet.create({
     marginTop: -16,
   },
   status: {
-    width: 70,
+    width: 90,
     height: 30,
     borderRadius: 16,
     backgroundColor: correct,
@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
   statusText: {
     fontFamily: text700,
     color: white,
-    fontSize: 16,
+    fontSize: 12,
     textAlign: "center",
   },
   date: {
@@ -93,6 +93,6 @@ export const styles = StyleSheet.create({
   dateText: {
     fontFamily: text700,
     color: dark,
-    fontSize: 18,
+    fontSize: 14,
   },
 });

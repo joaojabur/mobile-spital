@@ -7,7 +7,7 @@ const { text700 } = theme.fonts;
 export const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: 64,
+    height: 58,
     borderRadius: 16,
     alignSelf: "center",
     backgroundColor: correct,
@@ -17,6 +17,6 @@ export const styles = StyleSheet.create({
   title: {
     fontFamily: text700,
     color: white,
-    fontSize: 24,
+    fontSize: 20,
   },
 });
